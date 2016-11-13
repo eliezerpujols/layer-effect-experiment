@@ -3,7 +3,14 @@ $color-primary: #e5ff6a;
 $color-secondary: #abe96f;
 $color-accent: #ff653a;
 
+// Large Name
 $break-xs: 480px;
 $break-sm: 768px;
 $break-md: 992px;
 $break-lg: 1200px;
+
+// Short Name
+$xs: $break-xs;
+$sm: $break-sm;
+$md: $break-md;
+$lg: $break-lg;

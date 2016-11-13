@@ -19,3 +19,67 @@ body {
 strong {
   font-weight: 700;
 }
+
+/* -----------------------
+
+   Header
+
+-------------------------- */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  height: 72px;
+  padding: 0 18px;
+}
+
+@media (min-width: 768px) {
+  header {
+    height: 102px;
+    padding: 0 3%;
+  }
+}
+
+.header__logo,
+.header__trigger {
+  display: inline-block;
+}
+
+.header__logo > img {
+  display: block;
+  width: 182px;
+}
+
+@media (min-width: 768px) {
+  .header__logo > img {
+    width: 198px;
+  }
+}
+
+.header__trigger > span {
+  position: relative;
+  display: block;
+  width: 38px;
+  height: 4px;
+  background-color: #000;
+}
+
+.header__trigger > span:first-child {
+  margin-bottom: 8px;
+}
+
+@media (min-width: 768px) {
+  .header__trigger > span {
+    width: 50px;
+  }
+}
