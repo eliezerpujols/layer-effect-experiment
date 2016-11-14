@@ -14,6 +14,10 @@
 }
 
 body {
+   display: flex;
+   flex-direction: column;
+   height: 100vh;
+   min-height: 500px;
    font: {
       family: "Source Code Pro", Arial, sans-serif;
       size: 14px;
@@ -26,6 +30,15 @@ strong {
    font-weight: 700;
 }
 
+header,
+footer {
+   flex: none;
+}
+
+main {
+   flex: 1 0 auto;
+}
+
 /* -----------------------
 
    Header
@@ -33,7 +46,7 @@ strong {
 -------------------------- */
 
 header {
-   position: absolute;
+   position: absolute; // Or Fixed
    top: 0;
    left: 0;
    display: flex;
@@ -81,6 +94,33 @@ header {
    @include breakpoint(min, $sm) {
       > span {
          width: 50px;
+      }
+   }
+}
+
+/* -----------------------
+
+   Footer
+
+-------------------------- */
+
+footer {
+   width: 100%;
+   padding: 18px;
+   text-align: center;
+   @include breakpoint(min, $sm) {
+      position: absolute; // Or Fixed
+      right: 0;
+      bottom: 38px;
+      height: 201.6px;
+      padding: 0 3%;
+      text-align: right;
+      pointer-events: none;
+
+      .footer__legal {
+         display: inline-block;
+         transform-origin: right top;
+         transform: rotate(-90deg) translateY(-22px);
       }
    }
 }
