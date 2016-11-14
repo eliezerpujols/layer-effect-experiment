@@ -10,6 +10,17 @@
 }
 
 body {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh;
+  min-height: 500px;
   font-family: "Source Code Pro", Arial, sans-serif;
   font-size: 14px;
   line-height: 1.6;
@@ -18,6 +29,21 @@ body {
 
 strong {
   font-weight: 700;
+}
+
+header,
+footer {
+  -webkit-box-flex: 0;
+  -webkit-flex: none;
+      -ms-flex: none;
+          flex: none;
+}
+
+main {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
 }
 
 /* -----------------------
@@ -29,12 +55,15 @@ header {
   position: absolute;
   top: 0;
   left: 0;
+  display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -81,5 +110,37 @@ header {
 @media (min-width: 768px) {
   .header__trigger > span {
     width: 50px;
+  }
+}
+
+/* -----------------------
+
+   Footer
+
+-------------------------- */
+footer {
+  width: 100%;
+  padding: 18px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  footer {
+    position: absolute;
+    right: 0;
+    bottom: 38px;
+    height: 201.6px;
+    padding: 0 3%;
+    text-align: right;
+    pointer-events: none;
+  }
+  footer .footer__legal {
+    display: inline-block;
+    -webkit-transform-origin: right top;
+        -ms-transform-origin: right top;
+            transform-origin: right top;
+    -webkit-transform: rotate(-90deg) translateY(-22px);
+        -ms-transform: rotate(-90deg) translateY(-22px);
+            transform: rotate(-90deg) translateY(-22px);
   }
 }
