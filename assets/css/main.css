@@ -20,7 +20,7 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   height: 100vh;
-  min-height: 500px;
+  min-height: 670px;
   font-family: "Source Code Pro", Arial, sans-serif;
   font-size: 14px;
   line-height: 1.6;
@@ -29,6 +29,10 @@ body {
 
 strong {
   font-weight: 700;
+}
+
+p {
+  margin: 0 0 20px;
 }
 
 header,
@@ -52,6 +56,7 @@ main {
 
 -------------------------- */
 header {
+  z-index: 3;
   position: absolute;
   top: 0;
   left: 0;
@@ -115,6 +120,179 @@ header {
 
 /* -----------------------
 
+   Intro
+
+-------------------------- */
+#intro {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  min-height: 670px;
+  padding: 114px 18px 0;
+}
+
+@media (min-width: 768px) {
+  #intro {
+    padding: 114px 6% 0;
+  }
+}
+
+#intro::before, #intro::after {
+  content: " ";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  width: 60%;
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  #intro::before, #intro::after {
+    left: 11%;
+    right: auto;
+  }
+}
+
+@media (max-width: 1600px) {
+  #intro::before, #intro::after {
+    max-width: 697px;
+  }
+}
+
+#intro::before {
+  background-color: #abe96f;
+}
+
+#intro::after {
+  background-color: #e5ff6a;
+}
+
+.intro__heading {
+  margin: 0 0 38px;
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .intro__heading {
+    font-size: 94px;
+    margin: 0 0 48px;
+  }
+}
+
+.intro__heading > strong {
+  display: block;
+}
+
+.intro__content {
+  margin-left: 40px;
+  max-width: 475px;
+}
+
+@media (min-width: 768px) {
+  .intro__content {
+    margin-left: 11%;
+  }
+}
+
+.intro__content > p {
+  z-index: 1;
+  position: relative;
+}
+
+.intro__content > img {
+  z-index: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.intro__content > img.photo-1 {
+  top: 50px;
+  right: 11%;
+  max-width: 360px;
+}
+
+.intro__content > img.photo-2 {
+  top: 470px;
+  right: 30%;
+  max-width: 280px;
+}
+
+@media (min-width: 1200px) {
+  .intro__content > img.photo-1 {
+    right: 20%;
+    max-width: 420px;
+  }
+  .intro__content > img.photo-2 {
+    right: 38%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 992px) {
+  .intro__content > img {
+    display: none;
+  }
+}
+
+.intro__down-arrow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 100%;
+  height: 45px;
+}
+
+@media (min-width: 768px) {
+  .intro__down-arrow {
+    left: 11%;
+    -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+            transform: translateX(0);
+    width: 60%;
+    height: 65px;
+    max-width: 697px;
+  }
+}
+
+.intro__down-arrow .icon-down {
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  background-image: url("../icons/down-arrow-2.svg");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 45px;
+}
+
+@media (min-width: 768px) {
+  .intro__down-arrow .icon-down {
+    width: 65px;
+    height: 65px;
+    background-size: 65px;
+  }
+}
+
+/* -----------------------
+
    Footer
 
 -------------------------- */
@@ -126,6 +304,7 @@ footer {
 
 @media (min-width: 768px) {
   footer {
+    z-index: 3;
     position: absolute;
     right: 0;
     bottom: 38px;

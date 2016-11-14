@@ -17,7 +17,7 @@ body {
    display: flex;
    flex-direction: column;
    height: 100vh;
-   min-height: 500px;
+   min-height: 670px;
    font: {
       family: "Source Code Pro", Arial, sans-serif;
       size: 14px;
@@ -28,6 +28,10 @@ body {
 
 strong {
    font-weight: 700;
+}
+
+p {
+   margin: 0 0 20px;
 }
 
 header,
@@ -46,6 +50,7 @@ main {
 -------------------------- */
 
 header {
+   z-index: 3;
    position: absolute; // Or Fixed
    top: 0;
    left: 0;
@@ -100,6 +105,156 @@ header {
 
 /* -----------------------
 
+   Intro
+
+-------------------------- */
+
+#intro {
+   position: relative;
+   overflow: hidden;
+   height: 100vh;
+   min-height: 670px;
+   padding: 114px 18px 0;
+   @include breakpoint(min, $sm) {
+      padding: 114px 6% 0;
+   }
+
+   &::before,
+   &::after {
+      content: " ";
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: block;
+      width: 60%;
+      height: 100%;
+   }
+
+   @include breakpoint(min, $sm) {
+      &::before,
+      &::after {
+         left: 11%;
+         right: auto;
+      }
+   }
+
+   @include breakpoint(max, $xl) {
+      &::before,
+      &::after {
+         max-width: 697px; // Extra Large Screen
+      }
+   }
+
+   &::before {
+      background-color: $color-secondary;
+   }
+
+   &::after {
+      background-color: $color-primary;
+   }
+}
+
+.intro__heading {
+   margin: 0 0 38px;
+   font: {
+      size: 48px;
+      weight: 300;
+   }
+
+   line-height: 1.2;
+   @include breakpoint(min, $sm) {
+      font-size: 94px;
+      margin: 0 0 48px;
+   }
+
+   > strong {
+      display: block;
+   }
+}
+
+.intro__content {
+   margin-left: 40px;
+   max-width: 475px;
+   @include breakpoint(min, $sm) {
+      margin-left: 11%;
+   }
+
+   > p {
+      z-index: 1;
+      position: relative;
+   }
+
+   > img {
+      z-index: 0;
+      position: absolute;
+      width: 100%;
+      &.photo-1 {
+         top: 50px;
+         right: 11%;
+         max-width: 360px;
+      }
+
+      &.photo-2 {
+         top: 470px;
+         right: 30%;
+         max-width: 280px;
+      }
+
+      @include breakpoint(min, $lg) {
+         &.photo-1 {
+            right: 20%;
+            max-width: 420px;
+         }
+
+         &.photo-2 {
+            right: 38%;
+            max-width: 300px;
+         }
+      }
+
+      @include breakpoint(max, $md) {
+         display: none;
+      }
+   }
+}
+
+.intro__down-arrow {
+   position: absolute;
+   bottom: 0;
+   left: 50%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   transform: translateX(-50%);
+   width: 100%;
+   height: 45px;
+   @include breakpoint(min, $sm) {
+      left: 11%;
+      transform: translateX(0);
+      width: 60%;
+      height: 65px;
+      max-width: 697px;
+   }
+
+   .icon-down {
+      display: inline-block;
+      width: 45px;
+      height: 45px;
+      background-image: url("../icons/down-arrow-2.svg");
+      background-position: center bottom;
+      background-repeat: no-repeat;
+      background-size: 45px;
+      @include breakpoint(min, $sm) {
+         width: 65px;
+         height: 65px;
+         background-size: 65px;
+      }
+   }
+}
+
+/* -----------------------
+
    Footer
 
 -------------------------- */
@@ -109,6 +264,7 @@ footer {
    padding: 18px;
    text-align: center;
    @include breakpoint(min, $sm) {
+      z-index: 3;
       position: absolute; // Or Fixed
       right: 0;
       bottom: 38px;
