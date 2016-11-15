@@ -17,7 +17,7 @@ body {
    display: flex;
    flex-direction: column;
    height: 100vh;
-   min-height: 670px;
+   min-height: 642px;
    font: {
       family: "Source Code Pro", Arial, sans-serif;
       size: 14px;
@@ -111,12 +111,11 @@ header {
 
 #intro {
    position: relative;
-   overflow: hidden;
    height: 100vh;
-   min-height: 670px;
+   min-height: 642px;
    padding: 114px 18px 0;
    @include breakpoint(min, $sm) {
-      padding: 114px 6% 0;
+      padding: 114px 11% 0 6%;
    }
 
    &::before,
@@ -127,8 +126,9 @@ header {
       top: 0;
       right: 0;
       display: block;
-      width: 60%;
+      width: 70%;
       height: 100%;
+      max-width: 697px;
    }
 
    @include breakpoint(min, $sm) {
@@ -139,19 +139,38 @@ header {
       }
    }
 
-   @include breakpoint(max, $xl) {
-      &::before,
-      &::after {
-         max-width: 697px; // Extra Large Screen
-      }
-   }
-
    &::before {
       background-color: $color-secondary;
    }
 
    &::after {
       background-color: $color-primary;
+   }
+}
+
+.intro__inner {
+   position: relative;
+   max-width: 1024px;
+   width: 100%;
+   > img {
+      z-index: 0;
+      position: absolute;
+      width: 100%;
+      &.photo-1 {
+         top: -70px;
+         right: 0;
+         max-width: 360px;
+      }
+
+      &.photo-2 {
+         top: 256px;
+         right: 20%;
+         max-width: 300px;
+      }
+
+      @include breakpoint(max, $md) {
+         display: none;
+      }
    }
 }
 
@@ -184,39 +203,6 @@ header {
       z-index: 1;
       position: relative;
    }
-
-   > img {
-      z-index: 0;
-      position: absolute;
-      width: 100%;
-      &.photo-1 {
-         top: 50px;
-         right: 11%;
-         max-width: 360px;
-      }
-
-      &.photo-2 {
-         top: 470px;
-         right: 30%;
-         max-width: 280px;
-      }
-
-      @include breakpoint(min, $lg) {
-         &.photo-1 {
-            right: 20%;
-            max-width: 420px;
-         }
-
-         &.photo-2 {
-            right: 38%;
-            max-width: 300px;
-         }
-      }
-
-      @include breakpoint(max, $md) {
-         display: none;
-      }
-   }
 }
 
 .intro__down-arrow {
@@ -232,7 +218,7 @@ header {
    @include breakpoint(min, $sm) {
       left: 11%;
       transform: translateX(0);
-      width: 60%;
+      width: 70%;
       height: 65px;
       max-width: 697px;
    }
