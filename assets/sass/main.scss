@@ -34,6 +34,15 @@ p {
    margin: 0 0 20px;
 }
 
+::selection {
+   color: #000;
+   background-color: $color-secondary;
+}
+
+img::selection {
+   background-color: transparent;
+}
+
 header,
 footer {
    flex: none;
@@ -105,11 +114,11 @@ header {
 
 /* -----------------------
 
-   Intro
+   Hero
 
 -------------------------- */
 
-#intro {
+#hero {
    position: relative;
    height: 100vh;
    min-height: 642px;
@@ -126,7 +135,7 @@ header {
       top: 0;
       right: 0;
       display: block;
-      width: 70%;
+      width: 74%;
       height: 100%;
       max-width: 697px;
    }
@@ -134,8 +143,17 @@ header {
    @include breakpoint(min, $sm) {
       &::before,
       &::after {
+         left: 50%;
+         transform: translateX(-50%);
+      }
+   }
+
+   @include breakpoint(min, $md) {
+      &::before,
+      &::after {
          left: 11%;
          right: auto;
+         transform: translateX(0);
       }
    }
 
@@ -148,33 +166,33 @@ header {
    }
 }
 
-.intro__inner {
+.hero__inner {
    position: relative;
-   max-width: 1024px;
    width: 100%;
+   max-width: 1024px;
    > img {
       z-index: 0;
       position: absolute;
       width: 100%;
-      &.photo-1 {
-         top: -70px;
+      &.hero__photo-1 {
+         top: -66px;
          right: 0;
          max-width: 360px;
       }
 
-      &.photo-2 {
-         top: 256px;
+      &.hero__photo-2 {
+         top: 260px;
          right: 20%;
          max-width: 300px;
       }
 
-      @include breakpoint(max, $md) {
+      @include breakpoint(max, $md - 1px) { // 991px
          display: none;
       }
    }
 }
 
-.intro__heading {
+.hero__heading {
    margin: 0 0 38px;
    font: {
       size: 48px;
@@ -192,7 +210,7 @@ header {
    }
 }
 
-.intro__content {
+.hero__content {
    margin-left: 40px;
    max-width: 475px;
    @include breakpoint(min, $sm) {
@@ -205,26 +223,25 @@ header {
    }
 }
 
-.intro__down-arrow {
+.hero__down-arrow {
    position: absolute;
    bottom: 0;
    left: 50%;
-   display: flex;
-   align-items: center;
-   justify-content: center;
    transform: translateX(-50%);
+   display: flex;
+   justify-content: center;
    width: 100%;
    height: 45px;
    @include breakpoint(min, $sm) {
       left: 11%;
       transform: translateX(0);
-      width: 70%;
+      width: 74%;
       height: 65px;
       max-width: 697px;
    }
 
    .icon-down {
-      display: inline-block;
+      display: block;
       width: 45px;
       height: 45px;
       background-image: url("../icons/down-arrow-2.svg");
