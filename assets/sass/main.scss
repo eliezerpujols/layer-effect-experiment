@@ -135,6 +135,8 @@ header {
       top: 0;
       right: 0;
       display: block;
+      transform-origin: top;
+      transform: scaleY(0);
       width: 74%;
       height: 100%;
       max-width: 697px;
@@ -144,7 +146,8 @@ header {
       &::before,
       &::after {
          left: 50%;
-         transform: translateX(-50%);
+         transform: translateX(-50%) scaleY(0);
+         animation: animatedLayersHero 0.8s ease-out forwards;
       }
    }
 
@@ -153,7 +156,7 @@ header {
       &::after {
          left: 11%;
          right: auto;
-         transform: translateX(0);
+         transform: translateX(0) scaleY(0);
       }
    }
 
@@ -163,6 +166,7 @@ header {
 
    &::after {
       background-color: $color-primary;
+      animation-delay: 0.3s;
    }
 }
 
@@ -226,15 +230,13 @@ header {
 .hero__down-arrow {
    position: absolute;
    bottom: 0;
-   left: 50%;
-   transform: translateX(-50%);
+   left: 0;
    display: flex;
    justify-content: center;
    width: 100%;
    height: 45px;
    @include breakpoint(min, $sm) {
       left: 11%;
-      transform: translateX(0);
       width: 74%;
       height: 65px;
       max-width: 697px;
@@ -281,5 +283,121 @@ footer {
          transform-origin: right top;
          transform: rotate(-90deg) translateY(-22px);
       }
+   }
+}
+
+/* -----------------------
+
+   Layers Animation
+
+-------------------------- */
+
+[data-animated-layers] {
+   position: relative;
+   display: inline-block;
+   animation: animatedLayersText 0.2s ease-out forwards;
+   color: transparent;
+   &::before,
+   &::after {
+      z-index: 2;
+      content: " ";
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      animation: animatedLayers 1s ease-out;
+      transform-origin: left;
+      transform: scaleX(0);
+      width: calc(100% + 15px);
+      height: calc(100% + 15px);
+   }
+
+   &::before {
+      background-color: $color-secondary;
+   }
+
+   &::after {
+      background-color: $color-accent;
+      animation-delay: 0.3s;
+   }
+}
+
+[data-animated-layers^="2"] {
+   animation-delay: 1s;
+   &::before {
+      animation-delay: 0.4s;
+   }
+
+   &::after {
+      animation-delay: 0.8s;
+   }
+}
+
+[data-animated-layers^="3"] {
+   animation-delay: 2s;
+   &::before {
+      animation-delay: 1.4s;
+   }
+
+   &::after {
+      animation-delay: 1.8s;
+   }
+}
+
+@keyframes animatedLayers {
+   0% {
+      transform-origin: left;
+      transform: scaleX(0);
+   }
+
+   25% {
+      transform-origin: left;
+      transform: scaleX(0);
+   }
+
+   50% {
+      transform-origin: left;
+      transform: scaleX(1);
+   }
+
+   75% {
+      transform-origin: right;
+      transform: scaleX(1);
+   }
+
+   100% {
+      transform-origin: right;
+      transform: scaleX(0);
+   }
+}
+
+@keyframes animatedLayersText {
+   0% {
+      color: transparent;
+   }
+
+   100% {
+      color: #000;
+   }
+}
+
+@keyframes animatedLayersHero {
+   0% {
+      transform: scaleY(0);
+   }
+
+   25% {
+      transform: scaleY(0);
+   }
+
+   50% {
+      transform: scaleY(0);
+   }
+
+   75% {
+      transform: scaleY(1);
+   }
+
+   100% {
+      transform: scaleY(1);
    }
 }
