@@ -43,6 +43,24 @@ img::selection {
    background-color: transparent;
 }
 
+#pre-loader {
+   z-index: 10;
+   position: fixed;
+   top: 0;
+   left: 0;
+   transition: all 0.3s;
+   opacity: 0.8;
+   width: 100%;
+   height: 100%;
+   background: url("../img/pre-loader.gif"), #fff;
+   background-position: center center;
+   background-repeat: no-repeat;
+   background-size: 110px;
+   &.pre-loader--inactive {
+      opacity: 0;
+   }
+}
+
 header,
 footer {
    flex: none;
