@@ -140,20 +140,11 @@ header {
       max-width: 697px;
    }
 
-   @include breakpoint(min, $sm) {
-      &::before,
-      &::after {
-         left: 50%;
-         transform: translateX(-50%);
-      }
-   }
-
    @include breakpoint(min, $md) {
       &::before,
       &::after {
          left: 11%;
          right: auto;
-         transform: translateX(0);
       }
    }
 
@@ -175,13 +166,13 @@ header {
       position: absolute;
       width: 100%;
       &.hero__photo-1 {
-         top: -66px;
+         top: -68px;
          right: 0;
          max-width: 360px;
       }
 
       &.hero__photo-2 {
-         top: 260px;
+         top: 246px;
          right: 20%;
          max-width: 300px;
       }
@@ -226,15 +217,13 @@ header {
 .hero__down-arrow {
    position: absolute;
    bottom: 0;
-   left: 50%;
-   transform: translateX(-50%);
+   left: 0;
    display: flex;
    justify-content: center;
    width: 100%;
    height: 45px;
    @include breakpoint(min, $sm) {
       left: 11%;
-      transform: translateX(0);
       width: 74%;
       height: 65px;
       max-width: 697px;
@@ -281,5 +270,157 @@ footer {
          transform-origin: right top;
          transform: rotate(-90deg) translateY(-22px);
       }
+   }
+}
+
+/* -----------------------
+
+   Animations
+
+-------------------------- */
+
+body.animated-content {
+   #hero {
+      &::before,
+      &::after {
+         transform-origin: 50% 0%;
+         transform: scaleY(0);
+         animation: heroLayers 0.8s ease-out forwards;
+      }
+
+      &::after {
+         animation-delay: 0.4s;
+      }
+   }
+
+   .hero__inner {
+      > img {
+         &.hero__photo-1 {
+            clip: rect(0px, 360px, 540px, 360px);
+            animation: heroPhotoOne 0.3s 2.2s ease-out forwards;
+         }
+
+         &.hero__photo-2 {
+            clip: rect(0px, 300px, 245.5px, 300px);
+            animation: heroPhotoTwo 0.3s 3.2s ease-out forwards;
+         }
+      }
+   }
+
+   [data-text-layers] {
+      position: relative;
+      display: inline-block;
+      animation: textColor 0.2s ease-out forwards;
+      color: transparent;
+      &::before,
+      &::after {
+         z-index: 2;
+         content: " ";
+         position: absolute;
+         top: -15px;
+         left: -15px;
+         animation: textLayers 1s ease-out;
+         transform-origin: left;
+         transform: scaleX(0);
+         width: calc(100% + 15px);
+         height: calc(100% + 15px);
+      }
+
+      &::before {
+         background-color: $color-secondary;
+      }
+
+      &::after {
+         background-color: $color-accent;
+         animation-delay: 0.3s;
+      }
+   }
+
+   [data-text-layers^="2"] {
+      animation-delay: 1.4s;
+      &::before {
+         animation-delay: 0.8s;
+      }
+
+      &::after {
+         animation-delay: 1s;
+      }
+   }
+
+   [data-text-layers^="3"] {
+      animation-delay: 2.4s;
+      &::before {
+         animation-delay: 1.8s;
+      }
+
+      &::after {
+         animation-delay: 2s;
+      }
+   }
+}
+
+@keyframes textLayers {
+   0%,
+   25% {
+      transform-origin: left;
+      transform: scaleX(0);
+   }
+
+   50% {
+      transform-origin: left;
+      transform: scaleX(1);
+   }
+
+   75% {
+      transform-origin: right;
+      transform: scaleX(1);
+   }
+
+   100% {
+      transform-origin: right;
+      transform: scaleX(0);
+   }
+}
+
+@keyframes textColor {
+   0% {
+      color: transparent;
+   }
+
+   100% {
+      color: #000;
+   }
+}
+
+@keyframes heroLayers {
+   0%,
+   25%,
+   50% {
+      transform: scaleY(0);
+   }
+
+   75%,
+   100% {
+      transform: scaleY(1);
+   }
+}
+
+@keyframes heroPhotoOne {
+   0% {
+      clip: rect(0px, 360px, 540px, 360px);
+   }
+
+   100% {
+      clip: rect(0px, 360px, 540px, 0px);
+   }
+}
+
+@keyframes heroPhotoTwo {
+   0% {
+      clip: rect(0px, 300px, 245.5px, 300px);
+   }
+
+   100% {
+      clip: rect(0px, 300px, 245.5px, 0px);
    }
 }
