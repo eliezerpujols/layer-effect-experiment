@@ -10,6 +10,14 @@
 }
 
 body {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh;
+  min-height: 642px;
   font-family: "Source Code Pro", Arial, sans-serif;
   font-size: 14px;
   line-height: 1.6;
@@ -18,4 +26,543 @@ body {
 
 strong {
   font-weight: 700;
+}
+
+p {
+  margin: 0 0 20px;
+}
+
+::-moz-selection {
+  color: #000;
+  background-color: #abe96f;
+}
+
+::selection {
+  color: #000;
+  background-color: #abe96f;
+}
+
+img::-moz-selection {
+  background-color: transparent;
+}
+
+img::selection {
+  background-color: transparent;
+}
+
+#pre-loader {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: all 0.3s;
+  opacity: 0.8;
+  width: 100%;
+  height: 100%;
+  background: url("../img/pre-loader.gif"), #fff;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 110px;
+}
+
+#pre-loader.pre-loader--inactive {
+  opacity: 0;
+}
+
+header,
+footer {
+  -webkit-flex: none;
+      -ms-flex: none;
+          flex: none;
+}
+
+main {
+  -webkit-flex: 1 0 auto;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+}
+
+/* -----------------------
+
+   Header
+
+-------------------------- */
+header {
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  height: 72px;
+  padding: 0 18px;
+}
+
+@media (min-width: 768px) {
+  header {
+    height: 102px;
+    padding: 0 3%;
+  }
+}
+
+.header__logo,
+.header__trigger {
+  display: inline-block;
+}
+
+.header__logo > img {
+  display: block;
+  width: 182px;
+}
+
+@media (min-width: 768px) {
+  .header__logo > img {
+    width: 198px;
+  }
+}
+
+.header__trigger > span {
+  position: relative;
+  display: block;
+  width: 38px;
+  height: 4px;
+  background-color: #000;
+}
+
+.header__trigger > span:first-child {
+  margin-bottom: 8px;
+}
+
+@media (min-width: 768px) {
+  .header__trigger > span {
+    width: 50px;
+  }
+}
+
+/* -----------------------
+
+   Hero
+
+-------------------------- */
+#hero {
+  position: relative;
+  height: 100vh;
+  min-height: 642px;
+  padding: 114px 18px 0;
+}
+
+@media (min-width: 768px) {
+  #hero {
+    padding: 114px 11% 0 6%;
+  }
+}
+
+#hero::before, #hero::after {
+  content: " ";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  width: 74%;
+  height: 100%;
+  max-width: 697px;
+}
+
+@media (min-width: 992px) {
+  #hero::before, #hero::after {
+    left: 11%;
+    right: auto;
+  }
+}
+
+#hero::before {
+  background-color: #abe96f;
+}
+
+#hero::after {
+  background-color: #e5ff6a;
+}
+
+.hero__inner {
+  position: relative;
+  width: 100%;
+  max-width: 1024px;
+}
+
+.hero__inner > img {
+  z-index: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.hero__inner > img.hero__photo-1 {
+  top: -68px;
+  right: 0;
+  max-width: 360px;
+}
+
+.hero__inner > img.hero__photo-2 {
+  top: 246px;
+  right: 20%;
+  max-width: 300px;
+}
+
+@media (max-width: 991px) {
+  .hero__inner > img {
+    display: none;
+  }
+}
+
+.hero__heading {
+  margin: 0 0 38px;
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .hero__heading {
+    font-size: 94px;
+    margin: 0 0 48px;
+  }
+}
+
+.hero__heading > strong {
+  display: block;
+}
+
+.hero__content {
+  margin-left: 40px;
+  max-width: 475px;
+}
+
+@media (min-width: 768px) {
+  .hero__content {
+    margin-left: 11%;
+  }
+}
+
+.hero__content > p {
+  z-index: 1;
+  position: relative;
+}
+
+.hero__down-arrow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 45px;
+}
+
+@media (min-width: 768px) {
+  .hero__down-arrow {
+    left: 11%;
+    width: 74%;
+    height: 65px;
+    max-width: 697px;
+  }
+}
+
+.hero__down-arrow .icon-down {
+  display: block;
+  width: 45px;
+  height: 45px;
+  background-image: url("../icons/down-arrow-2.svg");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 45px;
+}
+
+@media (min-width: 768px) {
+  .hero__down-arrow .icon-down {
+    width: 65px;
+    height: 65px;
+    background-size: 65px;
+  }
+}
+
+/* -----------------------
+
+   Footer
+
+-------------------------- */
+footer {
+  width: 100%;
+  padding: 18px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  footer {
+    z-index: 3;
+    position: absolute;
+    right: 0;
+    bottom: 38px;
+    height: 201.6px;
+    padding: 0 3%;
+    text-align: right;
+    pointer-events: none;
+  }
+  footer .footer__legal {
+    display: inline-block;
+    -webkit-transform-origin: right top;
+        -ms-transform-origin: right top;
+            transform-origin: right top;
+    -webkit-transform: rotate(-90deg) translateY(-22px);
+        -ms-transform: rotate(-90deg) translateY(-22px);
+            transform: rotate(-90deg) translateY(-22px);
+  }
+}
+
+/* -----------------------
+
+   Animations
+
+-------------------------- */
+body.animated-content #hero::before, body.animated-content #hero::after {
+  -webkit-transform-origin: 50% 0%;
+      -ms-transform-origin: 50% 0%;
+          transform-origin: 50% 0%;
+  -webkit-transform: scaleY(0);
+      -ms-transform: scaleY(0);
+          transform: scaleY(0);
+  -webkit-animation: heroLayers 0.8s ease-out forwards;
+          animation: heroLayers 0.8s ease-out forwards;
+}
+
+body.animated-content #hero::after {
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+body.animated-content .hero__inner > img.hero__photo-1 {
+  clip: rect(0px, 360px, 540px, 360px);
+  -webkit-animation: heroPhotoOne 0.3s 2.2s ease-out forwards;
+          animation: heroPhotoOne 0.3s 2.2s ease-out forwards;
+}
+
+body.animated-content .hero__inner > img.hero__photo-2 {
+  clip: rect(0px, 300px, 245.5px, 300px);
+  -webkit-animation: heroPhotoTwo 0.3s 3.2s ease-out forwards;
+          animation: heroPhotoTwo 0.3s 3.2s ease-out forwards;
+}
+
+body.animated-content [data-text-layers] {
+  position: relative;
+  display: inline-block;
+  -webkit-animation: textColor 0.2s ease-out forwards;
+          animation: textColor 0.2s ease-out forwards;
+  color: transparent;
+}
+
+body.animated-content [data-text-layers]::before, body.animated-content [data-text-layers]::after {
+  z-index: 2;
+  content: " ";
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  -webkit-animation: textLayers 1s ease-out;
+          animation: textLayers 1s ease-out;
+  -webkit-transform-origin: left;
+      -ms-transform-origin: left;
+          transform-origin: left;
+  -webkit-transform: scaleX(0);
+      -ms-transform: scaleX(0);
+          transform: scaleX(0);
+  width: calc(100% + 15px);
+  height: calc(100% + 15px);
+}
+
+body.animated-content [data-text-layers]::before {
+  background-color: #abe96f;
+}
+
+body.animated-content [data-text-layers]::after {
+  background-color: #ff653a;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+
+body.animated-content [data-text-layers^="2"] {
+  -webkit-animation-delay: 1.4s;
+          animation-delay: 1.4s;
+}
+
+body.animated-content [data-text-layers^="2"]::before {
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+}
+
+body.animated-content [data-text-layers^="2"]::after {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+body.animated-content [data-text-layers^="3"] {
+  -webkit-animation-delay: 2.4s;
+          animation-delay: 2.4s;
+}
+
+body.animated-content [data-text-layers^="3"]::before {
+  -webkit-animation-delay: 1.8s;
+          animation-delay: 1.8s;
+}
+
+body.animated-content [data-text-layers^="3"]::after {
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+
+@-webkit-keyframes textLayers {
+  0%,
+  25% {
+    -webkit-transform-origin: left;
+            transform-origin: left;
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+  50% {
+    -webkit-transform-origin: left;
+            transform-origin: left;
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+  75% {
+    -webkit-transform-origin: right;
+            transform-origin: right;
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+  100% {
+    -webkit-transform-origin: right;
+            transform-origin: right;
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+}
+
+@keyframes textLayers {
+  0%,
+  25% {
+    -webkit-transform-origin: left;
+            transform-origin: left;
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+  50% {
+    -webkit-transform-origin: left;
+            transform-origin: left;
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+  75% {
+    -webkit-transform-origin: right;
+            transform-origin: right;
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+  100% {
+    -webkit-transform-origin: right;
+            transform-origin: right;
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+}
+
+@-webkit-keyframes textColor {
+  0% {
+    color: transparent;
+  }
+  100% {
+    color: #000;
+  }
+}
+
+@keyframes textColor {
+  0% {
+    color: transparent;
+  }
+  100% {
+    color: #000;
+  }
+}
+
+@-webkit-keyframes heroLayers {
+  0%,
+  25%,
+  50% {
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+  }
+  75%,
+  100% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+}
+
+@keyframes heroLayers {
+  0%,
+  25%,
+  50% {
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+  }
+  75%,
+  100% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+}
+
+@-webkit-keyframes heroPhotoOne {
+  0% {
+    clip: rect(0px, 360px, 540px, 360px);
+  }
+  100% {
+    clip: rect(0px, 360px, 540px, 0px);
+  }
+}
+
+@keyframes heroPhotoOne {
+  0% {
+    clip: rect(0px, 360px, 540px, 360px);
+  }
+  100% {
+    clip: rect(0px, 360px, 540px, 0px);
+  }
+}
+
+@-webkit-keyframes heroPhotoTwo {
+  0% {
+    clip: rect(0px, 300px, 245.5px, 300px);
+  }
+  100% {
+    clip: rect(0px, 300px, 245.5px, 0px);
+  }
+}
+
+@keyframes heroPhotoTwo {
+  0% {
+    clip: rect(0px, 300px, 245.5px, 300px);
+  }
+  100% {
+    clip: rect(0px, 300px, 245.5px, 0px);
+  }
 }
