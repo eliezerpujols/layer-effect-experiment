@@ -10,14 +10,6 @@
 }
 
 body {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  height: 100vh;
-  min-height: 642px;
   font-family: "Source Code Pro", Arial, sans-serif;
   font-size: 14px;
   line-height: 1.6;
@@ -50,7 +42,23 @@ img::selection {
   background-color: transparent;
 }
 
-#pre-loader {
+/* -----------------------
+
+   Layout
+
+-------------------------- */
+.o-layout {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh;
+  min-height: 642px;
+}
+
+.o-preloader {
   z-index: 10;
   position: fixed;
   top: 0;
@@ -66,19 +74,19 @@ img::selection {
   background-size: 110px;
 }
 
-#pre-loader.pre-loader--inactive {
+.o-preloader.js-preloader--disable {
   opacity: 0;
   visibility: hidden;
 }
 
-header,
-footer {
+.o-header,
+.o-footer {
   -webkit-flex: none;
       -ms-flex: none;
           flex: none;
 }
 
-main {
+.o-content {
   -webkit-flex: 1 0 auto;
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
@@ -89,9 +97,10 @@ main {
    Header
 
 -------------------------- */
-header {
+.o-header {
   z-index: 3;
   position: absolute;
+  /* Or Fixed */
   top: 0;
   left: 0;
   display: -webkit-flex;
@@ -109,29 +118,29 @@ header {
 }
 
 @media (min-width: 768px) {
-  header {
+  .o-header {
     height: 102px;
     padding: 0 3%;
   }
 }
 
-.header__logo,
-.header__trigger {
+.c-header__logo,
+.c-header__trigger {
   display: inline-block;
 }
 
-.header__logo > img {
+.c-header__logo > img {
   display: block;
   width: 182px;
 }
 
 @media (min-width: 768px) {
-  .header__logo > img {
+  .c-header__logo > img {
     width: 198px;
   }
 }
 
-.header__trigger > span {
+.c-header__trigger-bar {
   position: relative;
   display: block;
   width: 38px;
@@ -139,12 +148,12 @@ header {
   background-color: #000;
 }
 
-.header__trigger > span:first-child {
+.c-header__trigger-bar:first-child {
   margin-bottom: 8px;
 }
 
 @media (min-width: 768px) {
-  .header__trigger > span {
+  .c-header__trigger-bar {
     width: 50px;
   }
 }
@@ -154,20 +163,20 @@ header {
    Hero
 
 -------------------------- */
-#hero {
+.o-hero {
   position: relative;
   height: 100vh;
   min-height: 642px;
-  padding: 114px 18px 0;
+  padding: 114px 18px 28px;
 }
 
 @media (min-width: 768px) {
-  #hero {
+  .o-hero {
     padding: 114px 11% 0 6%;
   }
 }
 
-#hero::before, #hero::after {
+.o-hero::before, .o-hero::after {
   content: " ";
   z-index: -1;
   position: absolute;
@@ -180,51 +189,51 @@ header {
 }
 
 @media (min-width: 992px) {
-  #hero::before, #hero::after {
+  .o-hero::before, .o-hero::after {
     left: 11%;
     right: auto;
   }
 }
 
-#hero::before {
+.o-hero::before {
   background-color: #abe96f;
 }
 
-#hero::after {
+.o-hero::after {
   background-color: #e5ff6a;
 }
 
-.hero__inner {
+.c-hero__inner {
   position: relative;
   width: 100%;
   max-width: 1024px;
 }
 
-.hero__inner > img {
+.c-hero__photo {
   z-index: 0;
   position: absolute;
   width: 100%;
 }
 
-.hero__inner > img.hero__photo-1 {
+.c-hero__photo.c-hero__photo--large {
   top: -68px;
   right: 0;
   max-width: 360px;
 }
 
-.hero__inner > img.hero__photo-2 {
+.c-hero__photo.c-hero__photo--small {
   top: 246px;
   right: 20%;
   max-width: 300px;
 }
 
 @media (max-width: 991px) {
-  .hero__inner > img {
+  .c-hero__photo {
     display: none;
   }
 }
 
-.hero__heading {
+.c-hero__heading {
   margin: 0 0 38px;
   font-size: 48px;
   font-weight: 300;
@@ -232,33 +241,29 @@ header {
 }
 
 @media (min-width: 768px) {
-  .hero__heading {
-    font-size: 94px;
+  .c-hero__heading {
+    font-size: 86px;
     margin: 0 0 48px;
   }
 }
 
-.hero__heading > strong {
-  display: block;
-}
-
-.hero__content {
+.c-hero__content {
   margin-left: 40px;
   max-width: 475px;
 }
 
 @media (min-width: 768px) {
-  .hero__content {
+  .c-hero__content {
     margin-left: 11%;
   }
 }
 
-.hero__content > p {
+.c-hero__content > p {
   z-index: 1;
   position: relative;
 }
 
-.hero__down-arrow {
+.c-hero__arrow {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -273,7 +278,7 @@ header {
 }
 
 @media (min-width: 768px) {
-  .hero__down-arrow {
+  .c-hero__arrow {
     left: 11%;
     width: 74%;
     height: 65px;
@@ -281,7 +286,7 @@ header {
   }
 }
 
-.hero__down-arrow .icon-down {
+.c-hero__arrow-icon {
   display: block;
   width: 45px;
   height: 45px;
@@ -292,7 +297,7 @@ header {
 }
 
 @media (min-width: 768px) {
-  .hero__down-arrow .icon-down {
+  .c-hero__arrow-icon {
     width: 65px;
     height: 65px;
     background-size: 65px;
@@ -304,16 +309,17 @@ header {
    Footer
 
 -------------------------- */
-footer {
+.o-footer {
   width: 100%;
   padding: 18px;
   text-align: center;
 }
 
 @media (min-width: 768px) {
-  footer {
+  .o-footer {
     z-index: 3;
     position: absolute;
+    /* Or Fixed */
     right: 0;
     bottom: 38px;
     height: 201.6px;
@@ -321,7 +327,7 @@ footer {
     text-align: right;
     pointer-events: none;
   }
-  footer .footer__legal {
+  .o-footer .c-footer__legal {
     display: inline-block;
     -webkit-transform-origin: right top;
         -ms-transform-origin: right top;
@@ -337,7 +343,7 @@ footer {
    Animations
 
 -------------------------- */
-body.animated-content #hero::before, body.animated-content #hero::after {
+.js-layout--animated .o-hero::before, .js-layout--animated .o-hero::after {
   -webkit-transform-origin: 50% 0%;
       -ms-transform-origin: 50% 0%;
           transform-origin: 50% 0%;
@@ -348,24 +354,24 @@ body.animated-content #hero::before, body.animated-content #hero::after {
           animation: heroLayers 0.8s ease-out forwards;
 }
 
-body.animated-content #hero::after {
+.js-layout--animated .o-hero::after {
   -webkit-animation-delay: 0.4s;
           animation-delay: 0.4s;
 }
 
-body.animated-content .hero__inner > img.hero__photo-1 {
+.js-layout--animated .c-hero__photo.c-hero__photo--large {
   clip: rect(0px, 360px, 540px, 360px);
-  -webkit-animation: heroPhotoOne 0.3s 2.2s ease-out forwards;
-          animation: heroPhotoOne 0.3s 2.2s ease-out forwards;
+  -webkit-animation: heroPhotoLarge 0.3s 2.2s ease-out forwards;
+          animation: heroPhotoLarge 0.3s 2.2s ease-out forwards;
 }
 
-body.animated-content .hero__inner > img.hero__photo-2 {
+.js-layout--animated .c-hero__photo.c-hero__photo--small {
   clip: rect(0px, 300px, 245.5px, 300px);
-  -webkit-animation: heroPhotoTwo 0.3s 3.2s ease-out forwards;
-          animation: heroPhotoTwo 0.3s 3.2s ease-out forwards;
+  -webkit-animation: heroPhotoSmall 0.3s 3.2s ease-out forwards;
+          animation: heroPhotoSmall 0.3s 3.2s ease-out forwards;
 }
 
-body.animated-content [data-text-layers] {
+.js-layout--animated [data-text-layers] {
   position: relative;
   display: inline-block;
   -webkit-animation: textColor 0.2s ease-out forwards;
@@ -373,7 +379,7 @@ body.animated-content [data-text-layers] {
   color: transparent;
 }
 
-body.animated-content [data-text-layers]::before, body.animated-content [data-text-layers]::after {
+.js-layout--animated [data-text-layers]::before, .js-layout--animated [data-text-layers]::after {
   z-index: 2;
   content: " ";
   position: absolute;
@@ -391,42 +397,42 @@ body.animated-content [data-text-layers]::before, body.animated-content [data-te
   height: calc(100% + 15px);
 }
 
-body.animated-content [data-text-layers]::before {
+.js-layout--animated [data-text-layers]::before {
   background-color: #abe96f;
 }
 
-body.animated-content [data-text-layers]::after {
+.js-layout--animated [data-text-layers]::after {
   background-color: #ff653a;
   -webkit-animation-delay: 0.3s;
           animation-delay: 0.3s;
 }
 
-body.animated-content [data-text-layers^="2"] {
+.js-layout--animated [data-text-layers^="2"] {
   -webkit-animation-delay: 1.4s;
           animation-delay: 1.4s;
 }
 
-body.animated-content [data-text-layers^="2"]::before {
+.js-layout--animated [data-text-layers^="2"]::before {
   -webkit-animation-delay: 0.8s;
           animation-delay: 0.8s;
 }
 
-body.animated-content [data-text-layers^="2"]::after {
+.js-layout--animated [data-text-layers^="2"]::after {
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 }
 
-body.animated-content [data-text-layers^="3"] {
+.js-layout--animated [data-text-layers^="3"] {
   -webkit-animation-delay: 2.4s;
           animation-delay: 2.4s;
 }
 
-body.animated-content [data-text-layers^="3"]::before {
+.js-layout--animated [data-text-layers^="3"]::before {
   -webkit-animation-delay: 1.8s;
           animation-delay: 1.8s;
 }
 
-body.animated-content [data-text-layers^="3"]::after {
+.js-layout--animated [data-text-layers^="3"]::after {
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 }
@@ -533,7 +539,7 @@ body.animated-content [data-text-layers^="3"]::after {
   }
 }
 
-@-webkit-keyframes heroPhotoOne {
+@-webkit-keyframes heroPhotoLarge {
   0% {
     clip: rect(0px, 360px, 540px, 360px);
   }
@@ -542,7 +548,7 @@ body.animated-content [data-text-layers^="3"]::after {
   }
 }
 
-@keyframes heroPhotoOne {
+@keyframes heroPhotoLarge {
   0% {
     clip: rect(0px, 360px, 540px, 360px);
   }
@@ -551,7 +557,7 @@ body.animated-content [data-text-layers^="3"]::after {
   }
 }
 
-@-webkit-keyframes heroPhotoTwo {
+@-webkit-keyframes heroPhotoSmall {
   0% {
     clip: rect(0px, 300px, 245.5px, 300px);
   }
@@ -560,7 +566,7 @@ body.animated-content [data-text-layers^="3"]::after {
   }
 }
 
-@keyframes heroPhotoTwo {
+@keyframes heroPhotoSmall {
   0% {
     clip: rect(0px, 300px, 245.5px, 300px);
   }
@@ -568,3 +574,5 @@ body.animated-content [data-text-layers^="3"]::after {
     clip: rect(0px, 300px, 245.5px, 0px);
   }
 }
+
+/*# sourceMappingURL=main.css.map */

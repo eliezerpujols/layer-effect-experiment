@@ -13,47 +13,50 @@
       <link rel="stylesheet" href="assets/css/main.css">
    </head>
    <body>
-      <!-- Pre-loader -->
-      <div id="pre-loader"></div>
+      <div class="o-layout">
+         <!-- Pre-loader -->
+         <div class="o-preloader"></div>
 
-      <!-- Header -->
-      <header>
-         <a href="#0" class="header__logo">
-            <img src="assets/img/logo.svg" alt="Logo For Layer Effect">
-         </a>
+         <!-- Header -->
+         <header class="o-header">
+            <a class="c-header__logo" href="#0">
+               <img src="assets/img/logo.svg" alt="Logo">
+            </a>
 
-         <a href="#0" class="header__trigger">
-            <span></span>
-            <span></span>
-         </a>
-      </header>
+            <a class="c-header__trigger" href="#0">
+               <span class="c-header__trigger-bar"></span>
+               <span class="c-header__trigger-bar"></span>
+            </a>
+         </header>
 
-      <!-- Content Main -->
-      <main>
-         <!-- Hero -->
-         <section id="hero">
-            <div class="hero__inner">
-               <div class="hero__heading" data-text-layers="2">
-                  Art dans<strong>l'art</strong>
+         <!-- Content Main -->
+         <main class="o-content">
+            <!-- Hero -->
+            <div class="o-hero">
+               <div class="c-hero__inner">
+                  <div class="c-hero__heading" data-text-layers="2">
+                     Art dans<br>l'art
+                  </div>
+                  <br>
+                  <div class="c-hero__content" data-text-layers="3">
+                     <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.</p>
+                     <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure.</p>
+                  </div>
+                  <img class="c-hero__photo c-hero__photo--large" src="assets/img/photo-1.jpg" alt="">
+                  <img class="c-hero__photo c-hero__photo--small" src="assets/img/photo-2.jpg" alt="">
                </div>
-               <div class="hero__content" data-text-layers="3">
-                  <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. </p>
-                  <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure.</p>
+
+               <div class="c-hero__arrow">
+                  <a class="c-hero__arrow-icon" href="#0"></a>
                </div>
-               <img class="hero__photo-1" src="assets/img/photo-1.jpg" alt="">
-               <img class="hero__photo-2" src="assets/img/photo-2.jpg" alt="">
             </div>
+         </main>
 
-            <div class="hero__down-arrow">
-               <a href="#0" class="icon-down"></a>
-            </div>
-         </section>
-      </main>
-
-      <!-- Footer -->
-      <footer>
-         <span class="footer__legal">©2016 All Right Reserved</span>
-      </footer>
+         <!-- Footer -->
+         <footer class="o-footer">
+            <span class="c-footer__legal">©2016 All Right Reserved</span>
+         </footer>
+      </div>
 
       <!-- Jquery -->
       <script src="assets/js/jquery-3.1.1.min.js"></script>

@@ -14,10 +14,6 @@
 }
 
 body {
-   display: flex;
-   flex-direction: column;
-   height: 100vh;
-   min-height: 642px;
    font: {
       family: "Source Code Pro", Arial, sans-serif;
       size: 14px;
@@ -43,7 +39,20 @@ img::selection {
    background-color: transparent;
 }
 
-#pre-loader {
+/* -----------------------
+
+   Layout
+
+-------------------------- */
+
+.o-layout {
+   display: flex;
+   flex-direction: column;
+   height: 100vh;
+   min-height: 642px;
+}
+
+.o-preloader {
    z-index: 10;
    position: fixed;
    top: 0;
@@ -57,18 +66,18 @@ img::selection {
    background-position: center center;
    background-repeat: no-repeat;
    background-size: 110px;
-   &.pre-loader--inactive {
+   &.js-preloader--disable {
       opacity: 0;
 		visibility: hidden;
    }
 }
 
-header,
-footer {
+.o-header,
+.o-footer {
    flex: none;
 }
 
-main {
+.o-content {
    flex: 1 0 auto;
 }
 
@@ -78,9 +87,9 @@ main {
 
 -------------------------- */
 
-header {
+.o-header {
    z-index: 3;
-   position: absolute; // Or Fixed
+   position: absolute; /* Or Fixed */
    top: 0;
    left: 0;
    display: flex;
@@ -95,12 +104,12 @@ header {
    }
 }
 
-.header__logo,
-.header__trigger {
+.c-header__logo,
+.c-header__trigger {
    display: inline-block;
 }
 
-.header__logo {
+.c-header__logo {
    > img {
       display: block;
       width: 182px;
@@ -113,8 +122,8 @@ header {
    }
 }
 
-.header__trigger {
-   > span {
+.c-header__trigger {
+   &-bar {
       position: relative;
       display: block;
       width: 38px;
@@ -123,10 +132,8 @@ header {
       &:first-child {
          margin-bottom: 8px;
       }
-   }
 
-   @include breakpoint(min, $sm) {
-      > span {
+      @include breakpoint(min, $sm) {
          width: 50px;
       }
    }
@@ -138,11 +145,11 @@ header {
 
 -------------------------- */
 
-#hero {
+.o-hero {
    position: relative;
    height: 100vh;
    min-height: 642px;
-   padding: 114px 18px 0;
+   padding: 114px 18px 28px;
    @include breakpoint(min, $sm) {
       padding: 114px 11% 0 6%;
    }
@@ -177,33 +184,34 @@ header {
    }
 }
 
-.hero__inner {
+.c-hero__inner {
    position: relative;
    width: 100%;
    max-width: 1024px;
-   > img {
-      z-index: 0;
-      position: absolute;
-      width: 100%;
-      &.hero__photo-1 {
-         top: -68px;
-         right: 0;
-         max-width: 360px;
-      }
+}
 
-      &.hero__photo-2 {
-         top: 246px;
-         right: 20%;
-         max-width: 300px;
-      }
+.c-hero__photo {
+   z-index: 0;
+   position: absolute;
+   width: 100%;
+   &.c-hero__photo--large {
+      top: -68px;
+      right: 0;
+      max-width: 360px;
+   }
 
-      @include breakpoint(max, $md - 1px) { // 991px
-         display: none;
-      }
+   &.c-hero__photo--small {
+      top: 246px;
+      right: 20%;
+      max-width: 300px;
+   }
+
+   @include breakpoint(max, $md - 1px) { // 991px
+      display: none;
    }
 }
 
-.hero__heading {
+.c-hero__heading {
    margin: 0 0 38px;
    font: {
       size: 48px;
@@ -212,16 +220,12 @@ header {
 
    line-height: 1.2;
    @include breakpoint(min, $sm) {
-      font-size: 94px;
+      font-size: 86px;
       margin: 0 0 48px;
-   }
-
-   > strong {
-      display: block;
    }
 }
 
-.hero__content {
+.c-hero__content {
    margin-left: 40px;
    max-width: 475px;
    @include breakpoint(min, $sm) {
@@ -234,7 +238,7 @@ header {
    }
 }
 
-.hero__down-arrow {
+.c-hero__arrow {
    position: absolute;
    bottom: 0;
    left: 0;
@@ -249,7 +253,7 @@ header {
       max-width: 697px;
    }
 
-   .icon-down {
+   &-icon {
       display: block;
       width: 45px;
       height: 45px;
@@ -271,13 +275,13 @@ header {
 
 -------------------------- */
 
-footer {
+.o-footer {
    width: 100%;
    padding: 18px;
    text-align: center;
    @include breakpoint(min, $sm) {
       z-index: 3;
-      position: absolute; // Or Fixed
+      position: absolute;  /* Or Fixed */
       right: 0;
       bottom: 38px;
       height: 201.6px;
@@ -285,7 +289,7 @@ footer {
       text-align: right;
       pointer-events: none;
 
-      .footer__legal {
+      .c-footer__legal {
          display: inline-block;
          transform-origin: right top;
          transform: rotate(-90deg) translateY(-22px);
@@ -299,8 +303,8 @@ footer {
 
 -------------------------- */
 
-body.animated-content {
-   #hero {
+.js-layout--animated {
+   .o-hero {
       &::before,
       &::after {
          transform-origin: 50% 0%;
@@ -313,17 +317,15 @@ body.animated-content {
       }
    }
 
-   .hero__inner {
-      > img {
-         &.hero__photo-1 {
-            clip: rect(0px, 360px, 540px, 360px);
-            animation: heroPhotoOne 0.3s 2.2s ease-out forwards;
-         }
+   .c-hero__photo {
+      &.c-hero__photo--large {
+         clip: rect(0px, 360px, 540px, 360px);
+         animation: heroPhotoLarge 0.3s 2.2s ease-out forwards;
+      }
 
-         &.hero__photo-2 {
-            clip: rect(0px, 300px, 245.5px, 300px);
-            animation: heroPhotoTwo 0.3s 3.2s ease-out forwards;
-         }
+      &.c-hero__photo--small {
+         clip: rect(0px, 300px, 245.5px, 300px);
+         animation: heroPhotoSmall 0.3s 3.2s ease-out forwards;
       }
    }
 
@@ -425,7 +427,7 @@ body.animated-content {
    }
 }
 
-@keyframes heroPhotoOne {
+@keyframes heroPhotoLarge {
    0% {
       clip: rect(0px, 360px, 540px, 360px);
    }
@@ -435,7 +437,7 @@ body.animated-content {
    }
 }
 
-@keyframes heroPhotoTwo {
+@keyframes heroPhotoSmall {
    0% {
       clip: rect(0px, 300px, 245.5px, 300px);
    }
