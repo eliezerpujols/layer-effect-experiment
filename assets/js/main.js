@@ -1,5 +1,7 @@
-// Main JS
 $(window).on("load", function() {
-   $("body").addClass("animated-content");
-   $("#pre-loader").addClass("pre-loader--inactive");
+   // Initializar Animation for Layers
+   $(".o-layout").addClass("js-layout--animated");
+
+   // Disabled Pre-Loader, if the web is loaded
+   $(".o-preloader").addClass("js-preloader--disable");
 });
